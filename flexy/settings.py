@@ -1,5 +1,5 @@
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -16,13 +16,21 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'learn.apps.LearnConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'learn.apps.LearnConfig',
+    'django.contrib.humanize',
+    'tailwind',
+    'theme',
+    'django_browser_reload',
+    'fontawesomefree',
+    'django_filters',
+    'django_fastdev',
+    'import_export',
 ]
 
 MIDDLEWARE = [
@@ -40,7 +48,7 @@ ROOT_URLCONF = 'flexy.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -55,7 +63,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'flexy.wsgi.application'
 
-
+# TAILWIND_APP_NAME='theme'
+# INTERNAL_IPS=['127.0.0.1']
+# NPM_BIN_PATH = "C:/Program Files/nodejs/npm.cmd"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
@@ -91,19 +101,26 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Lagos'
 
-USE_I18N = True
+USE_I18N = False
+
+USE_L10N=True
+
+USE_THOUSAND_SEPARATOR=True
 
 USE_TZ = True
 
+DATE_INPUT_FORMATS = ['%d-%m-%Y'] 
+DATETIME_INPUT_FORMAT=['%d-%m-%Y']
+
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL="/login/"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
+STATIC_ROOT=os.path.join(BASE_DIR,'static/')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

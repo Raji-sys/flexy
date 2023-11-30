@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{%load static %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="mt-44 w-1/2 text-center mx-auto">
+    <div class="p-10 gap-12 flex bg-white uppercase text-white text-center mx-auto shadow-2xl rounded-2xl ">
+        <div>
+            <img src="{%static "images/logo.jpg" %}" alt="">
+        </div>
+        <div class="mt-10">
+        <h1 class="text-center text-green-600 font-semibold text-3xl align-middle items-center p-2 ">nohd store</h1>
+        <h3 class=" text-center text-gray-700 font-medium text-xl align-middle items-center p-2">inventory management system</h3>
+    <div>
+<div class="flex flex-row border-t-2 border-zinc-700 mt-2 p-4 mx-auto justify-center items-center gap-6">
+    <a href="{% url "list" %}" class="">
+        <div class="text-sm p-2 bg-zinc-600 rounded-xl shadow-2xl hover:text-zinc-700 hover:bg-white hover:border-2 hover:border-zinc-600 focus:opacity-10">items</div>
+    </a>
+    <a href="{% url "record" %}" class="">
+        <div class="text-sm p-2 bg-amber-600 rounded-xl shadow-2xl hover:text-zinc-700 hover:bg-white hover:border-2 hover:border-amber-600 focus:opacity-10">record</div>
+    </a>
+    <a href="{% url "report" %}" class="">
+        <div class="text-sm p-2 bg-blue-600 rounded-xl shadow-2xl hover:text-zinc-700 hover:bg-white hover:border-2 hover:border-blue-600 focus:opacity-10">report</div>
+    </a>
+    <a href="{% url "worth" %}" class="">
+        <div class="text-sm p-2 bg-green-600 rounded-xl shadow-2xl hover:text-zinc-700 hover:bg-white hover:border-2 hover:border-green-600 focus:opacity-10">worth</div>
+    </a>
+</div>
+    </div>
+    </div>
+</div>
+</div>  
+{% endblock %}

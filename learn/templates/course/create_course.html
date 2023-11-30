@@ -1,0 +1,62 @@
+
+{% extends 'base.html' %}
+{% block title %}NOHD STORE{% endblock %}
+{% block content %}
+  <div class="flex justify-center mt-10">
+    <div class="font-semibold uppercase text-xs shadow-2xl sm:max-w-lg mx-auto md:p-8 overflow-hidden rounded-2xl bg-white mt-8">
+      <section class="text-center border-b-2 border-green-800 p-2 m-2">
+        <p class="text-sm font-bold pt-2">add a new item</p>
+                  {% if form.non_field_errors %}
+          <div class="text-red-600 text-lg">
+            {{ form.non_field_errors.0 }}
+          </div>
+        {% endif %}
+
+      </section>
+      <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="grid grid-cols-1 gap-2">
+          <span>ITEM NAME</span>
+          {{ form.name }}
+          {% if form.name.errors %}
+            <div class="text-red-600 ">
+              {{ form.name.errors.0 }}
+            </div>
+          {% endif %}
+          <span>VENDOR</span>
+          {{ form.vendor }}
+          {% if form.vendor.errors %}
+            <div class="text-red-600">
+              {{ form.vendor.errors.0 }}
+            </div>
+          {% endif %}
+            <span>UNIT</span>
+          {{ form.unit }}
+          {% if form.unit.errors %}
+            <div class="text-red-600">
+              {{ form.unit.errors.0 }}
+            </div>
+          {% endif %}
+            <span>COST</span>
+          {{ form.cost }}
+          {% if form.cost.errors %}
+            <div class="text-red-600">
+              {{ form.cost.errors.0 }}
+            </div>
+          {% endif %}
+            <span>QUANTITY</span>
+          {{ form.total_purchased_quantity }}
+          {% if form.total_purchased_quantity.errors %}
+            <div class="text-red-600">
+              {{ form.total_purchased_quantity.errors.0 }}
+            </div>
+          {% endif %}
+        </div>
+        <div class="flex justify-center align-middle mt-2">
+          <input type="submit" value="add item" class="focus:opacity-10 uppercase focus:border-green-600 hover:bg-white hover:text-green-600 hover:border-2 hover:border-green-600
+         bg-green-500 text-white py-2 px-6 rounded shadow-lg hover:shadow-xl">
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

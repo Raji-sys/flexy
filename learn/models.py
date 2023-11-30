@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 
 class UserProfile(models.Model):
@@ -8,14 +9,26 @@ class UserProfile(models.Model):
     dob=models.DateField(blank=True, null=True)
     phone=models.PositiveIntegerField(blank=True, null=True)
 
+    def get_absolute_url(self):
+        return reverse('user_detail', args=[self.name])
+    
+    def __str__(self):
+        return self.user
+
 
 class Course(models.Model):
+    name=models.CharField(max_length=200, blank=True, null=True)
     student=models.ManyToManyField(User, through='Enrollment', related_name='enrolled_courses')
     description=models.TextField(blank=True, null=True)
     tutor=models.ForeignKey(User,on_delete=models.CASCADE, related_name='tutor_courses')
     duration=models.CharField(max_length=255, blank=True, null=True)
     date_created=models.DateTimeField(auto_now_add=True)
 
+    def get_absolute_url(self):
+        return reverse('course_detail', args=[self.name])
+    
+    def __str__(self):
+        return self.name
 
 class Module(models.Model):
     course=models.ForeignKey(Course,on_delete=models.CASCADE)

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}eWARD{% endblock %}
+{% block content %}
+    <div class="ml-28  flex justify-center mt-12 p-1 mx-auto">
+    <ul class="bg-gradient-to-r from-green-400 via-white to-blue-400 uppercase border-2 rounded-xl p-4 text-gray-600 font-semibold text-sm mt-4 border-emerald-900 shadow-2xl">
+        <ll class="flex justify-items-center">  
+          <div class="mt-1 bg-white rounded-xl mx-auto">
+            {% load thumbnail %}
+            <a href="{{ member.photo.url }}" class="rounded-xl p-2">
+        <img src="{% thumbnail member.photo 300x0 %}" class=" mx-auto object-contain h-48 w-96">
+        </a>
+        </div>     
+      </ll>
+        <div class="p-1 rounded-lg ">
+  <div class="bg-white p-1 mt-4 rounded mx-auto">
+        <h2 class="bg-gradient-to-r from-emerald-900 via-emerald-800 to-emerald-900 text-transparent bg-clip-text font-bold text-center uppercase text-md p-2 border-b border-t mt-2">{{member.title|default_if_none:''}} {{member|default_if_none:''}}</h2>
+        <li class="p-2 border-b-2 flex justify-between"><span>phone:</span>{{member.phone|default_if_none:''}}</li>
+        <li class="p-2 border-b-2 flex justify-between"><span>email:</span>{{member.email|default_if_none:''}}</li>
+        <li class="p-2 border-b-2 flex justify-between"><span>gender:</span> {{member.gender|default_if_none:''}}</li>
+        <li class="p-2 border-b-2 flex justify-between"><span>age:</span>{{member.age|default_if_none:''}}</li>
+        <li class="p-2 border-b-2 flex justify-between"><span>occupation:</span>{{member.occupation|default_if_none:''}}</li>
+        <li class="p-2 border-b-2 flex justify-between"><span>qualification:</span>{{member.qualification|default_if_none:''}}</li>
+        <li class="p-2 border-b-2 flex justify-between"><span>address:</span>{{member.address|default_if_none:''}}</li>
+        </div>
+      </div>
+    </ul>
+    </div>
+{% endblock %}
+{% block left_sidebar %}
+  	<aside class=" bg-white p-1 mt-2 rounded-xl mx-auto">
+    <div class="flex flex-wrap items-center justify-center sticky top-0 ">
+    <img src="{% static 'images/logo1.png' %}" class="mt-10">
+  </div>
+    <div class="border-b border-t border-gray-400 bg-white p-1 mt-12">
+      <h1 class="text-center bg-gradient-to-r from-green-700 via-green-500 to-green-700 text-transparent bg-clip-text font-medium text-2xl align-middle mb-2 p-2">all progressives congress</h1>
+</div>
+   </aside>
+  {% endblock %}

@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Create an account{% endblock %}
+
+{% block content %}
+<div class="flex justify-center">    
+    <div class="font-semibold uppercase text-xs shadow-2xl sm:max-w-lg mx-auto md:p-8 overflow-hidden rounded-2xl bg-white mt-16">
+    <section class="text-center border-b-2 border-green-800 p-2 m-2">
+          <p class="bg-gradient-to-r from-green-700 via-green-500 to-green-700 text-transparent bg-clip-text text-sm font-bold pt-2">fill this form to create your account</p>
+           <div class="flex justify-center text-md text-red-500">
+          {% if user_form.errors %}
+          {{user_form.errors}}
+          {% endif %}
+        </div>
+    </section>
+  <form method="POST">
+      {% csrf_token %}
+        <div class="mb-1 mt-2 uppercase text-gray-600">
+          <div class="flex justify-center">
+            <label for="uname">username</label>
+          </div>
+          <p class="flex justify-center mb-4">
+          <input
+            id="uname"
+            class="text-xs focus:outline-none border border-blue-300 p-3 rounded shadow-lg hover:shadow-xl"
+            type="text"
+            name="username"
+          />
+        </p>
+        <div class="flex justify-center">
+          <label for="email">email</label>
+        </div>
+        <p class="flex justify-center mb-4">
+          <input
+            id="email"
+            class="text-xs focus:outline-none border border-blue-300 p-3 rounded shadow-lg hover:shadow-xl"
+            type="text"
+            name="email"
+          />
+        </p>
+        <div class="flex justify-center">
+          <label for="lname">last name</label>
+        </div>
+        <p class="flex justify-center mb-4">
+          <input
+            class="text-xs focus:outline-none border border-blue-300 p-3 rounded shadow-lg hover:shadow-xl"
+            type="text"
+            name="last_name"
+            id="lname"
+          />
+        </p>
+        <div class="flex justify-center">
+          <label for="fname">first name</label>
+        </div>
+        <p class="flex justify-center mb-4">
+          <input
+            class="text-xs focus:outline-none border border-blue-300 p-3 rounded shadow-lg hover:shadow-xl"
+            type="text"
+            name="first_name"
+            id="fname"
+          />
+        </p>
+        <div class="flex justify-center">
+          <label for="password">password </label>
+        </div>
+        <p class="flex justify-center mb-4">
+          <input
+            class="text-xs focus:outline-none border border-blue-300 p-3 rounded shadow-lg hover:shadow-xl"
+            type="password"
+            name="password"
+            id="password"
+          />
+        </p>
+   
+        <div class="flex justify-center">
+          <label for="conpassword">confirm password </label>
+        </div>
+        <p class="flex justify-center mb-4">
+          <input
+            class="text-xs focus:outline-none border border-blue-300 p-3 rounded shadow-lg hover:shadow-xl"
+            type="password"
+            name="password2"
+            id="conpassword"
+          />
+        </p>
+<div class="flex justify-center">	
+    <input class="focus:opacity-10 uppercase focus:border-green-600
+         bg-gradient-to-r from-green-700 via-green-500 to-green-700 text-white p-2 rounded shadow-lg hover:shadow-xl " type="submit" value="register">
+</div>
+  </form>
+</div>
+</div>
+  {% endblock %}
+{% block left_sidebar %}
+  	<aside class=" bg-white p-1 mt-1 rounded-xl mx-auto ">
+         <img src="{% static 'images/ganduje.jpg' %}" class="rounded-xl mt-4">
+          <div class="bg-gradient-to-r from-blue-700 via-blue-500 to-blue-700 text-transparent bg-clip-text font-bold text-lg uppercase text-center">
+          {% if request.user.is_authenticated %}
+          <div class=" grid grid-cols-1 gap-3 mt-1 uppercase text-center p-1 rounded-3xl ">
+    <a href="{% url 'zone'  %}"><div class="focus:opacity-10 uppercase focus:border-blue-600
+				 bg-gradient-to-r from-green-600 via-green-500 to-green-600 text-white p-2 rounded shadow-lg hover:shadow-xl">
+        <p class="font-bold text-sm"><i class="fa-solid fa-map-location-dot fa-2xl"></i> zones</p>
+    </div></a>
+    <a href="{%url 'report' %}"><div class="focus:opacity-10 uppercase focus:border-blue-600
+				 bg-gray-200 text-black  p-2 rounded shadow-lg hover:shadow-xl">
+        <p class="text-sm"> <i class="fa-solid fa-print fa-2xl"></i> report<p>
+    </div></a>
+    <a href="{%url 'stat' %}"><div class="focus:opacity-10 uppercasefocus:border-blue-600
+				 bg-gradient-to-r from-blue-500 via-blue-400 to-blue-500 text-white p-2 rounded shadow-lg hover:shadow-xl">
+        <p class="text-sm"><i class="fa-solid fa-list-ol fa-2xl"></i> stats</p>
+    </div></a>
+    <a href="#"><div class="focus:opacity-10 uppercasefocus:border-blue-600
+				 bg-gradient-to-r from-rose-600 via-rose-500 to-rose-600 text-white p-2 rounded shadow-lg hover:shadow-xl">
+        <p class="text-sm"><i class="fa-solid fa-users fa-2xl"></i> party leadership</p>
+    </div></a>
+  </div>
+  {% endif %}
+    </div>
+   </aside> 
+{% endblock %}
